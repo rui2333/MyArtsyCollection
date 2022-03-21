@@ -1,5 +1,6 @@
 package com.example.myartsycollection.network
 
+import com.example.myartsycollection.model.ArtworkInfo
 import com.example.myartsycollection.model.ArtworksResponse
 import com.skydoves.sandwich.ApiResponse
 import okhttp3.ResponseBody
@@ -19,6 +20,13 @@ class AppClient @Inject constructor(
 
     suspend fun fetchToken(): Response<ResponseBody> =
         appService.fetchToken()
+
+    suspend fun fetchArtworkInfo(
+        id: String
+    ): ApiResponse<ArtworkInfo> =
+        appService.fetchArtworkInfo(
+            id = id
+        )
 
     companion object {
         private const val PAGING_SIZE = 20

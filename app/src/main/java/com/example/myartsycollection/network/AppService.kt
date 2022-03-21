@@ -23,5 +23,6 @@ interface AppService {
     ): Response<ResponseBody>
 
     @GET("artworks/{id}")
+    @Headers("X-Xapp-Token: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6IiIsInN1YmplY3RfYXBwbGljYXRpb24iOiI2MWUxMDg5MWY2ZDI5NTAwMGU3YjQ5MmQiLCJleHAiOjE2NDg0MDcyODQsImlhdCI6MTY0NzgwMjQ4NCwiYXVkIjoiNjFlMTA4OTFmNmQyOTUwMDBlN2I0OTJkIiwiaXNzIjoiR3Jhdml0eSIsImp0aSI6IjYyMzc3ODc0MGFhMDc3MDAwZWMyNWJhYiJ9.TQC3nGd9ROsS8DOghbra9wRCobxwO354SwzaIVRoUpM")
     suspend fun fetchArtworkInfo (@Path("id") id:String): ApiResponse<ArtworkInfo>
 }

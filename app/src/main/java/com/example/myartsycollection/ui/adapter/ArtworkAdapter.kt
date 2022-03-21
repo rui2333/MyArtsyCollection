@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 import com.example.myartsycollection.R
 import com.example.myartsycollection.databinding.ArtworkBinding
 import com.example.myartsycollection.model.Artwork
+import com.example.myartsycollection.ui.detail.DetailActivity
 import com.skydoves.bindables.BindingListAdapter
 import com.skydoves.bindables.binding
+import timber.log.Timber
 
 class ArtworkAdapter : BindingListAdapter<Artwork, ArtworkAdapter.ArtworkViewHolder>(diffUtil) {
     private var onClickedAt = 0L
@@ -32,7 +34,9 @@ class ArtworkAdapter : BindingListAdapter<Artwork, ArtworkAdapter.ArtworkViewHol
                     ?: return@setOnClickListener
                 val currentClickedAt = SystemClock.elapsedRealtime()
                 if (currentClickedAt - onClickedAt > binding.transformationLayout.duration) {
-                    TODO()
+                    Timber.d(getItem(position).getImageUrl())
+                    DetailActivity.startActivity(binding.transformationLayout, getItem(position))
+                    onClickedAt = currentClickedAt
                 }
             }
         }
